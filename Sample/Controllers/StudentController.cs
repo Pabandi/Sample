@@ -17,9 +17,25 @@ namespace Sample.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            var students = db.T_Student;
-
+            var students = db.T_Student.ToList();
+            
             return View(students);
+        }
+
+        [HttpGet]
+        public  ActionResult Create()
+        {
+            return View();  
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Create(T_Student student)
+        {
+            db.T_Student.Add(student);
+            db.SaveChanges();
+            return View();
         }
     }
 }
