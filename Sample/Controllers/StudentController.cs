@@ -33,6 +33,7 @@ namespace Sample.Controllers
         [HttpPost]
         public ActionResult Create(T_Student student)
         {
+
             db.T_Student.Add(student);
             db.SaveChanges();
             return View();
