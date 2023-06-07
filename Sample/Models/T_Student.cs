@@ -11,7 +11,8 @@ namespace Sample.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
+ 
     public partial class T_Student
     {
         public int Id { get; set; }
@@ -19,5 +20,7 @@ namespace Sample.Models
         public string Family { get; set; }
         public string Mobile { get; set; }
         public string email { get; set; }
+        public bool gender { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

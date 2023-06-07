@@ -31,12 +31,17 @@ namespace Sample.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(T_Student student)
+        public ActionResult Create( [Bind(Include = "Name, Family, Mobile, email, gender" )] T_Student student)
         {
-
-            db.T_Student.Add(student);
-            db.SaveChanges();
-            return View();
+            if (ModelState.IsValid)
+            {
+                student.IsActive = true;
+                db.T_Student.Add(student);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(student);
+         
         }
     }
 }
