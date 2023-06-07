@@ -43,5 +43,13 @@ namespace Sample.Controllers
             return View(student);
          
         }
+        
+        
+        [HttpGet]
+        public  ActionResult Edite()
+        {
+            return View();  
+        }
+        
     }
 }
