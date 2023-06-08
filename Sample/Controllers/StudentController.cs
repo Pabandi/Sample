@@ -43,8 +43,15 @@ namespace Sample.Controllers
             return View(student);
          
         }
-        
-        
+
+        public ActionResult Details(int id)
+        {
+            var student = db.T_Student.Find(id);    
+            return View(student);
+        }
+
+
+
         [HttpGet]
         public  ActionResult Edite()
         {
