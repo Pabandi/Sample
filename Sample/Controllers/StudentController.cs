@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sample.Models;
@@ -57,6 +58,26 @@ namespace Sample.Controllers
         {
             return View();  
         }
-        
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+
+            var student = db.T_Student.Find(id);
+            return View(student);
+        }
+
+
+        [HttpPost , ActionName("Delete")]
+        public ActionResult Deletes( int id)
+        {
+            var student = db.T_Student.Find(id);
+            if (student != null)
+            {
+                db.T_Student.Remove(student);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

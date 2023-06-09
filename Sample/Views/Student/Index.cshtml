@@ -8,7 +8,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "student" , new { @class = "btn btn-success" })
+
 </p>
 <table class="table">
     <tr>
@@ -30,7 +31,9 @@
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
-        <th></th>
+        <th>
+            Oprations
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -53,10 +56,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        <td >
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id } , new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id },  new { @class = "btn btn-secondary " }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id },  new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
