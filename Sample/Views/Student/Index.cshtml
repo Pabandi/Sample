@@ -39,6 +39,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @if (item.gender == true)
+            {
+                <span>Mr.</span>
+            }
+            else
+            {
+              <span>Ms.</span>
+            }
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>

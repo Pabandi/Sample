@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    display : flex;
+    flex-direction : column;
+    min-height : 100vh;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -17,7 +20,6 @@ textarea {
 }
 
 .footer {
-   /* position: fixed;
-    bottom: 0;*/
+  margin-top : auto;
 }
 
