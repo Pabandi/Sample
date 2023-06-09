@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -112,7 +113,7 @@ namespace Sample.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Name, Family, Mobile, email, gender")] T_Student student)
+        public ActionResult Edit([Bind(Include = "Id ,Name, Family, Mobile, email, gender , IsActive")] T_Student student)
         {
             if (student.Name == null)
             {
@@ -147,9 +148,7 @@ namespace Sample.Controllers
 
             if (ModelState.IsValid)
             {
-
-                student.IsActive = true;
-                db.T_Student.Add(student);
+                db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
