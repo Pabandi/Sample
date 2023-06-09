@@ -59,17 +59,8 @@ namespace Sample.Controllers
             return View();  
         }
 
-        [HttpGet]
-        public ActionResult Delete(int? id)
-        {
 
-            var student = db.T_Student.Find(id);
-            return View(student);
-        }
-
-
-        [HttpPost , ActionName("Delete")]
-        public ActionResult Deletes( int id)
+        public ActionResult Delete( int id)
         {
             var student = db.T_Student.Find(id);
             if (student != null)
