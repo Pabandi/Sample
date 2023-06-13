@@ -8,69 +8,88 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>T_Student</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+<div class="form-control">
+    <h4>T_Student</h4>
+    <hr />
+    <div class="d-flex">
+        <div class="form-group col-md-3">
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                <input type="text" id="Fname" name="Name" class="form-control" />
+
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-3">
             @Html.LabelFor(model => model.Family, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Family, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="text" id="Lname" name="Family" class="form-control" />
                 @Html.ValidationMessageFor(model => model.Family, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
+        <div class="form-group col-md-3">
             @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="text" id="Mobile" name="Mobile" class="form-control" />
                 @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-3">
             @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="text" id="Email" name="email" class="form-control" />
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             </div>
         </div>
+    </div>
 
-        <div class="form-group">
+
+
+    <div class="d-flex mt-4">
+
+        <div class="form-group col-md-4">
             @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.gender)
+            <div>
+                <div>
+                    <input type="checkbox" id="Gender" name="gender" class="form-control" />
                     @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-4">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <button type="button" value="Create" class="btn btn-success" onclick="">Create</button>
+                @*<input type="submit" value="Create" class="btn btn-success" />*@
             </div>
         </div>
-    </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        @*<div class="col-md-4 btn btn-secondary">
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
+    </div>
+
+    <div class="mt-5">
+        @Html.Action("Index")
+    </div>
 </div>
 
-<script src="~/Scripts/jquery-3.7.0.min.js"></script>
-@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script>
+
+    fonction        
+
+</script>
+
+
+
+
+
+
+
+
+
+

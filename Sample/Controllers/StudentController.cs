@@ -22,8 +22,11 @@ namespace Sample.Controllers
         {
             var students = db.T_Student.ToList();
             
-            return View(students);
+            return PartialView(students);
         }
+
+
+
 
         [HttpGet]
         public  ActionResult Create()
