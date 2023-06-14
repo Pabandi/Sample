@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Sample.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
-using Sample.Models;
 
 
 
@@ -21,7 +18,7 @@ namespace Sample.Controllers
         public ActionResult Index()
         {
             var students = db.T_Student.ToList();
-            
+
             return PartialView(students);
         }
 
@@ -29,64 +26,38 @@ namespace Sample.Controllers
 
 
         [HttpGet]
-        public  ActionResult Create()
+        public ActionResult Create()
         {
-            return View();  
+            return View();
         }
 
 
 
         [HttpPost]
-        public ActionResult Create( [Bind(Include = "Name, Family, Mobile, email, gender" )] T_Student student)
+        public ActionResult Create(string CName, string CFamily, string CMobile, string Cemail, bool Cgender)
         {
-            if (student.Name == null)
+            var student = new T_Student()
             {
-                ModelState.AddModelError("Name", "this field cannot be empty");
-            }
-            if (student.Family == null)
-            {
-                ModelState.AddModelError("family", "this field cannot be empty");
-            }
-            if (student.Mobile == null)
-            {
-                ModelState.AddModelError("mobile", "this field cannot be empty");
-            }
-            else
-            {
-                if (!Regex.IsMatch(student.Mobile, "^\\+?[1-9][0-9]{7,14}$"))
-                {
-                    ModelState.AddModelError("mobile", "this pattern is not true(+12223334444)");
-                }
-            }
-            if (student.email == null)
-            {
-                ModelState.AddModelError("email", "this field cannot be empty");
-            }
-            else
-            {
-                if (!Regex.IsMatch(student.email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z"))
-                {
-                    ModelState.AddModelError("email", "this pattern is not true");
-                }
-            }
-         
-            if (ModelState.IsValid)
-            {
-                
-                student.IsActive = true;
-                db.T_Student.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(student);
-         
+                IsActive = true,
+                Name = CName,
+                Family = CFamily,
+                Mobile = CMobile,
+                email = Cemail,
+                gender = Cgender,
+            };
+
+
+            db.T_Student.Add(student);
+            db.SaveChanges();
+            return View();
+
         }
 
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-               return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var student = db.T_Student.Find(id);
@@ -96,10 +67,10 @@ namespace Sample.Controllers
             }
             return View(student);
         }
-    
+
 
         [HttpGet]
-        public  ActionResult Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -167,7 +138,7 @@ namespace Sample.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult (HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var student = db.T_Student.Find(id);
